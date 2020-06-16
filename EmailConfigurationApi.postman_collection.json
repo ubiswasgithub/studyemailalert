@@ -1,0 +1,356 @@
+{
+	"info": {
+		"_postman_id": "ac67d0a8-bd91-4327-850d-b091c5b37bec",
+		"name": "EmailConfigurationApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "combined",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab63a591-e9fd-40c0-8146-b879f4985e98",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"EntityType\": \"StudyFormAlertConfig\",\n        \"Data\": [\n            {\n                \"studyId\": \"{{data__StudyID}}\",\n                \"studyName\": \"{{data__StudyName}}\",\n                \"studyVisitId\": \"{{data__StudyVisitID}}\",\n                \"studyVisitName\": \"{{data__StudyVisitName}}\",\n                \"studyFormId\": \"{{data__StudyFormID}}\",\n                \"studyFormName\": \"data__StudyFormName\",\n                \"serviceName\": \"{{data__ServiceName}}\",\n                \"eventTopicName\": \"{{data__EventTopicName}}\",\n                \"activateDate\": \"{{data__ActivateDate}}\",\n                \"deactivateDate\": null\n                \n            }\n        ]\n    },\n    {\n        \"EntityType\": \"StudyTopicEvent\",\n        \"Data\": [\n            {\n                \"StudyId\": \"{{data__StudyID}}\",\n                \"EventType\": \"{{data__EventType}}\",\n                \"EventSubject\": \"{{data__EventSubject}}\",\n                \"EventTopicName\": \"{{data__EventTopicName}}\",\n                \"ActivateDate\": \"{{data__ActivateDate}}\",\n                \"DeactivateDate\": null\n            }\n        ]\n    }\n    \n    \n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "az1gvgcfunc-fm.azurewebsites.net/api/ConfigApi?code={{api-config-key}}",
+					"host": [
+						"az1gvgcfunc-fm",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"ConfigApi"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "{{api-config-key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "StudyConfiguration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4f5c9b7d-acab-47f6-aa19-a24c431780f8",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"EntityType\": \"StudyFormAlertConfig\",\n        \"Data\": [\n            {\n                \"studyId\": \"{{data__StudyID}}\",\n                \"studyName\": \"{{data__StudyName}}\",\n                \"studyVisitId\": \"{{data__StudyVisitID}}\",\n                \"studyVisitName\": \"{{data__StudyVisitName}}\",\n                \"studyFormId\": \"{{data__StudyFormID}}\",\n                \"studyFormName\": \"{{data__StudyFormName}}\",\n                \"serviceName\": \"{{data__ServiceName}}\",\n                \"activateDate\": \"{{data__ActivateDate}}\",\n                \"deactivateDate\": null\n                \n            }\n        ]\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "az1{{config_env}}vgcfunc-fm.azurewebsites.net/api/ConfigApi?code={{api-config-key}}",
+					"host": [
+						"az1{{config_env}}vgcfunc-fm",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"ConfigApi"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "{{api-config-key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "StudyConfiguration Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "937963c2-1069-4ef3-b297-6c93258aee70",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"entityType\": \"StudyTopicEvent\",\n        \"data\": [\n            {\n                \"eventTopicName\": \"Study_CMPFormSubmissionChecker\",\n                \"eventType\": \"MAPP.Events.RiskDetector\",\n                \"eventSubject\": \"Study_CMP Form Submission Checker\",\n                \"deactivateDate\": null,\n                \"activateDate\": \"2020-06-03T10:23:16.1072001Z\",\n                \"studyId\": \"9255b0ab-c780-4cdb-b92a-9dc62cf93b7a\",\n                \"rowId\": \"2518111210038984568\"\n            }\n        ]\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "az1{{config_env}}vgcfunc-fm.azurewebsites.net/api/ConfigApi?code={{api-config-key}}",
+					"host": [
+						"az1{{config_env}}vgcfunc-fm",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"ConfigApi"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "{{api-config-key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "StudyTopicEventConfig",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cade9707-9930-4430-a0da-d8c545c1932a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"EntityType\": \"StudyTopicEvent\",\n        \"Data\": [\n            {\n                \"StudyId\": \"{{data__StudyID}}\",\n                \"EventType\": \"{{data__EventType}}\",\n                \"EventSubject\": \"{{data__EventSubject}}\",\n                \"EventTopicName\": \"{{data__EventTopicName}}\",\n                \"ActivateDate\": \"{{data__ActivateDate}}\",\n                \"DeactivateDate\": null\n            }\n        ]\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "az1{{config_env}}vgcfunc-fm.azurewebsites.net/api/ConfigApi?code={{api-config-key}}",
+					"host": [
+						"az1{{config_env}}vgcfunc-fm",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"ConfigApi"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "{{api-config-key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ServiceConfig",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fe9cace1-f6e5-450d-b1dd-9244d7762f38",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"EntityType\": \"ServiceInfo\",\n        \"Data\": [\n            {\n                \"StudyId\": \"{{data__StudyID}}\",\n                \"StudyName\":\"{{data__StudyName}}\",\n                \"ServiceName\": \"{{data__ServiceName}}\",\n                \"ServiceUrl\": \"{{data__ServiceUrl}}\",\n                \"ServiceApiKey\":\"{{data__ServiceApiKey}}\",\n                \"JSONString\":\"{{data__JSONString}}\",\n                \"EventTypeId\":\"{{data__EventTypeId}}\",\t\n                \"ActivateDate\": \"{{data__ActivateDate}}\",\n                \"DeactivateDate\": null\n            }\n        ]\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "az1{{config_env}}vgcfunc-fm.azurewebsites.net/api/ConfigApi?code={{api-config-key}}",
+					"host": [
+						"az1{{config_env}}vgcfunc-fm",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"ConfigApi"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "{{api-config-key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET-configuration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ccd391f0-f554-42d2-95be-03079e1f4bed",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "az1{{config_env}}vgcfunc-fm.azurewebsites.net/api/ConfigApi?code={{api-config-key}}&EntityType=StudyTopicEvent&StudyId=9328f1ea-50e3-4fc3-b9a9-b605808cd685",
+					"host": [
+						"az1{{config_env}}vgcfunc-fm",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"ConfigApi"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "{{api-config-key}}"
+						},
+						{
+							"key": "EntityType",
+							"value": "StudyTopicEvent"
+						},
+						{
+							"key": "StudyId",
+							"value": "9328f1ea-50e3-4fc3-b9a9-b605808cd685"
+						},
+						{
+							"key": "rowId",
+							"value": "2518116417231227826",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "e0490479-f345-4a08-a106-a66b4675abee",
+		"name": "EmailAlertRiskNotifier",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "risknotifier",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1df7b658-e89f-4bd6-a45c-89016ac3b11c",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "aeg-sas-key",
+						"value": "{{aeg-sas-key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"id\": \"{{id}}\",\n        \"subject\": \"{{subject}}\",\n        \"data\": {\n            \"StudyID\": \"{{data__StudyID}}\",\n            \"StudyName\": \"{{data__StudyName}}\",\n            \"StudySiteID\": \"{{data__StudySiteID}}\",\n            \"SiteNumber\": \"{{data__SiteNumber}}\",\n            \"SubjectID\": \"{{data__SubjectID}}\",\n            \"SubjectNumber\": \"{{data__SubjectNumber}}\",\n            \"SubjectVisitID\": \"{{data__SubjectVisitID}}\",\n            \"SVID\": \"{{data__SVID}}\",\n            \"ActualDate\": \"{{data__ActualDate}}\",\n            \"SubjectVisitStatusID\": \"{{data__SubjectVisitStatusID}}\",\n            \"StudyVisitID\": \"{{data__StudyVisitID}}\",\n            \"FormID\": \"{{data__FormID}}\",\n            \"FormRevisionID\": \"{{data__FormRevisionID}}\",\n            \"Revision\": {{data__Revision}},\n            \"SubjectVisitStatus\": \"{{data__SubjectVisitStatus}}\",\n            \"StudyFormName\": \"{{data__StudyFormName}}\",\n            \"StudyVisitName\": \"{{data__StudyVisitName}}\",\n            \"StudyFormID\": \"{{data__StudyFormID}}\",\n            \"Id\": \"{{data__Id}}\",\n            \"CorrelationId\": \"{{data__CorrelationId}}\",\n            \"TestMode\": \"{{data__TestMode}}\",\n            \"PropagateTestMode\": \"{{data__PropagateTestMode}}\",\n            \"ExecutedServiceName\":\"{{data__ExecutedServiceName}}\",\n            \"ConfiguredServiceNames\": [\n                \"{{data__ConfiguredServiceNames}}\"\n            ],\n            \"SponsorName\": \"{{data__SponsorName}}\",\n            \"EventTopicName\": \"{{data__EventTopicName}}\",\n            \"ConfiguredEventTypes\": [\"{{data__ConfiguredEventTypes}}\"],\n            \"ExecutedServiceResult\": [\n                {\n                    \"FlagId\": {{data__FlagId}},\n                    \"FlagName\": \"{{data___FlagName}}\",\n                    \"FlagDefinition\": \"{{data__FlagDefinition}}\",\n                    \"OutcomeDetail\": \"{{data__OutcomeDetail}}\",\n                    \"OutcomeDefinition\": \"{{data__OutcomeDefinition}}\",\n                    \"Outcome\": \"{{data__Outcome}}\",\n                    \"ErrorCode\": {{data__errorCode}},\n                    \"ErrorMessage\": \"Errorinalgorithm\"\n                }\n            ],\n            \"ServiceOutcome\": \"{{data__ServiceOutcome}}\"\n        },\n        \"eventType\": \"{{eventType}}\",\n        \"eventTime\": \"{{eventTime}}\",\n        \"dataVersion\": \"{{dataVersion}}\",\n        \"metadataVersion\": \"{{metadataVersion}}\"\n    }\n]"
+				},
+				"url": {
+					"raw": "https://{{eventname}}-fm.eastus2-1.eventgrid.azure.net/api/events?api-version={{api-version}}",
+					"protocol": "https",
+					"host": [
+						"{{eventname}}-fm",
+						"eastus2-1",
+						"eventgrid",
+						"azure",
+						"net"
+					],
+					"path": [
+						"api",
+						"events"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "{{api-version}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
