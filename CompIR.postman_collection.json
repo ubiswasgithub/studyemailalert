@@ -1,0 +1,328 @@
+{
+	"info": {
+		"_postman_id": "2931d946-b5d1-44fb-ae5f-877ced382340",
+		"name": "CompIR",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "EXPT 1_COMPIR_MADRS TEST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3854f75a-95d6-4a62-a47a-ac08a32e0162",
+						"exec": [
+							"var time = pm.globals.get(\"timestamp\");\r",
+							"\r",
+							"var template = `\r",
+							"    <style type=\"text/css\">\r",
+							"        .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+							"        .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+							"        .tftable tr {background-color:#ffffff;}\r",
+							"        .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+							"        .tftable tr:hover {background-color:#e0ffff;}\r",
+							"    </style>\r",
+							"    \r",
+							"    <table class=\"tftable\" border=\"1\">\r",
+							"        <tr>\r",
+							"            <th>Algorithm Name</th>\r",
+							"            <th>SubjectNumber</th>\r",
+							"            <th>SVID</th>\r",
+							"            <th>VisitName</th>\r",
+							"            <th>Outcome</th>\r",
+							"            <th>OutcomeDefinition</th>\r",
+							"            <th>OutcomeDetail</th>\r",
+							"            <th>FlagId</th>\r",
+							"            <th>FlagName</th>          \r",
+							"            \r",
+							"            <th>FlagDefinition</th>\r",
+							"            <th>ErrorCode</th>\r",
+							"            <th>ErrorMessage</th>\r",
+							"            \r",
+							"\r",
+							"            \r",
+							"            \r",
+							"        </tr>\r",
+							"        \r",
+							"        {{#each response.Results.output1.value.Values}}\r",
+							"            <tr id=row_{{@key}} onClick=\"handleClick(this.id)\">\r",
+							"               \r",
+							"                <td id={{@key}}>{{[8]}}</td>\r",
+							"                <td>{{[3]}}</td>\r",
+							"                <td>{{[0]}}</td>\r",
+							"                <td>{{[4]}}</td>\r",
+							"                <td>{{[12]}}</td>\r",
+							"                 <td>{{[10]}}</td>\r",
+							"                <td>{{[11]}}</td> \r",
+							"                <td>{{[7]}}</td>\r",
+							"                <td>{{[8]}}</td>\r",
+							"                \r",
+							"               \r",
+							"                 <td>{{[9]}}</td>\r",
+							"                <td>{{[13]}}</td>\r",
+							"                <td>{{[14]}}</td>\r",
+							"               \r",
+							"                \r",
+							"\r",
+							"                        \r",
+							"            </tr>\r",
+							"        {{/each}}\r",
+							"    </table>\r",
+							"`;\r",
+							"\r",
+							"pm.visualizer.set(template, {\r",
+							"    response: pm.response.json()\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Study Config Response\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        console.log(jsonData)\r",
+							"        //jsonData.Results.output1.value.Values\r",
+							"        for (var i = 0;i<jsonData.Results.output1.value.Values.length;i++) \r",
+							"        {\r",
+							"\r",
+							"            console.log(JSON.stringify( [\"SVID:\",jsonData.Results.output1.value.Values[i][0],jsonData.Results.output1.value.Values[i][10]\r",
+							"            ,jsonData.Results.output1.value.Values[i][12], jsonData.Results.output1.value.Values[i][14]]\r",
+							"            \r",
+							"            ));\r",
+							"            //console.log(\r",
+							"            //jsonData.Results.output1.value.Values[i][0]\r",
+							"            //,jsonData.Results.output1.value.Values[i][10]\r",
+							"            //,jsonData.Results.output1.value.Values[i][12]\r",
+							"            //sonData.Results.output1.value.Values[i][14]);\r",
+							"            //console.log(jsonData.Results.output1.value.Values[i][10]);\r",
+							"            //console.log(jsonData.Results.output1.value.Values[i][12]);\r",
+							"            //console.log(jsonData.Results.output1.value.Values[i][14]);\r",
+							"\r",
+							"            //console.log(jsonData.Results.output1.value.Values[i]);\r",
+							"        }\r",
+							"        //console.log(jsonData.Results.output1.value.Values.length);\r",
+							"        \r",
+							"\r",
+							"}\r",
+							");\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"        pm.response.to.be.ok;\r",
+							"        pm.response.to.be.withBody;\r",
+							"        pm.response.to.be.json;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer HDbsB3fjtOR/j+F8ssh1goFdS3Yg+diBXe5nKDSRk8nvjtTsWbjyiymtmlQMqR9wpE5Yy55ZUD+Xb4tRHtvlIg=="
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Inputs\": {\r\n    \"input1\": {\r\n      \"ColumnNames\": [\r\n        \"StudyName\",\r\n        \"SiteNumber\",\r\n        \"SubjectNumber\",\r\n        \"SVID\",\r\n        \"VisitName\",\r\n        \"VisitSequence\",\r\n        \"VisitDate\",\r\n        \"IsUnScheduled\",\r\n        \"IsRepeated\",\r\n        \"CurrentVisitSubmitted\",\r\n        \"CurrentFormSubmitted\",\r\n        \"FormName\",\r\n        \"AssessmentDate\",\r\n        \"ItemName\",\r\n        \"ItemValue\",\r\n        \"StudyID\",\r\n        \"StudySiteID\",\r\n        \"SubjectID\",\r\n        \"SubjectVisitID\",\r\n        \"StudyVisitID\",\r\n        \"FormID\",\r\n        \"StudyFormID\"\r\n      ],\r\n\t      \"Values\":\r\n\t    \t[\r\n\t    \t\t[\"Compass Independent Rating\",\"333\",\"333-1111\",\"33311\",\"Baseline (Day-1)\",\"10\",\"4/1/2020\",\"0\",\"0\",\"1\",\"1\",\"SIGMA\",\"4/1/2020\",\"Output_MADRS_Total\",\"38\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-1111\",\"33312\",\"Visit 4 (Day 1)\",\"10\",\"4/2/2020\",\"0\",\"0\",\"0\",\"1\",\"SIGMA\",\"4/1/2020\",\"Output_MADRS_Total\",\"38\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-2222\",\"33321\",\"Baseline (Day-1)\",\"10\",\"2/18/2020\",\"0\",\"0\",\"0\",\"1\",\"SIGMA\",\"2/18/2020\",\"Output_MADRS_Total\",\"40\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-2222\",\"33322\",\"Visit 4 (Day 1)\",\"20\",\"2/20/2020\",\"0\",\"0\",\"1\",\"1\",\"SIGMA 24 Hr_c\",\"2/20/2020\",\"Output_MADRS_Total\",\"22\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-3331\",\"33331\",\"Baseline (Day-1)\",\"10\",\"3/18/2020\",\"0\",\"0\",\"0\",\"1\",\"SIGMA\",\"3/18/2020\",\"Output_MADRS_Total\",\"16\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-3331\",\"33332\",\"Visit 4 (Day 1)\",\"20\",\"3/20/2020\",\"0\",\"0\",\"0\",\"1\",\"SIGMA 24 Hr_c\",\"3/20/2020\",\"Output_MADRS_Total\",\"14\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-3331\",\"33333\",\"Visit 5 (Day 7)\",\"30\",\"9/25/2020\",\"0\",\"0\",\"1\",\"1\",\"SIGMA\",\"9/25/2020\",\"Output_MADRS_Total\",\"35\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-4441\",\"33341\",\"Baseline (Day-1)\",\"10\",\"10/2/2020\",\"0\",\"0\",\"0\",\"1\",\"SIGMA\",\"10/2/2020\",\"Output_MADRS_Total\",\"36\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-4441\",\"33342\",\"Visit 4 (Day 1)\",\"20\",\"1/4/2020\",\"0\",\"0\",\"0\",\"1\",\"SIGMA 24 Hr_c\",\"1/4/2020\",\"Output_MADRS_Total\",\"38\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-4441\",\"33343\",\"Visit 5 (Day 7)\",\"30\",\"1/9/2020\",\"0\",\"0\",\"0\",\"1\",\"SIGMA\",\"1/9/2020\",\"Output_MADRS_Total\",\"32\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-4441\",\"33344\",\"Visit 7 (Day 21)\",\"40\",\"1/25/2020\",\"0\",\"0\",\"1\",\"1\",\"SIGMA\",\"1/25/2020\",\"Output_MADRS_Total\",\"34\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-5551\",\"33351\",\"Baseline (Day-1)\",\"10\",\"10/2/2020\",\"0\",\"0\",\"0\",\"1\",\"SIGMA\",\"10/2/2020\",\"Output_MADRS_Total\",\"36\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-5551\",\"33352\",\"Visit 4 (Day 1)\",\"20\",\"1/4/2020\",\"0\",\"0\",\"0\",\"1\",\"SIGMA 24 Hr_c\",\"1/4/2020\",\"Output_MADRS_Total\",\"33\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-5551\",\"33353\",\"Visit 5 (Day 7)\",\"30\",\"1/9/2020\",\"0\",\"0\",\"0\",\"1\",\"SIGMA\",\"1/9/2020\",\"Output_MADRS_Total\",\"44\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-5551\",\"33354\",\"Visit 7 (Day 21)\",\"40\",\"1/25/2020\",\"0\",\"0\",\"0\",\"1\",\"SIGMA\",\"1/25/2020\",\"Output_MADRS_Total\",\"34\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-5551\",\"33355\",\"Visit 8 (Day 42)\",\"50\",\"2/16/2020\",\"0\",\"0\",\"1\",\"1\",\"SIGMA\",\"2/16/2020\",\"Output_MADRS_Total\",\"36\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-6661\",\"33361\",\"Baseline (Day-1)\",\"10\",\"3/16/2020\",\"0\",\"0\",\"1\",\"1\",\"SIGMA\",\"3/16/2020\",\"Output_MADRS_Total\",\"36\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-7777\",\"33371\",\"Baseline (Day-1)\",\"10\",\"2/19/2020\",\"0\",\"0\",\"0\",\"1\",\"SIGMA\",\"2/19/2020\",\"Output_MADRS_Total\",\"21\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-7777\",\"33372\",\"Visit 4 (Day 1)\",\"20\",\"2/21/2020\",\"0\",\"0\",\"0\",\"1\",\"SIGMA 24 Hr_c\",\"2/21/2020\",\"Output_MADRS_Total\",\"8\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-7777\",\"33373\",\"Visit 5 (Day 7)\",\"30\",\"2/27/2020\",\"0\",\"0\",\"0\",\"1\",\"SIGMA\",\"2/27/2020\",\"Output_MADRS_Total\",\"19\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-7777\",\"33374\",\"Visit 7 (Day 21)\",\"40\",\"3/12/2020\",\"0\",\"0\",\"0\",\"1\",\"SIGMA\",\"3/12/2020\",\"Output_MADRS_Total\",\"21\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-7777\",\"33375\",\"Visit 8 (Day 42)\",\"50\",\"4/2/2020\",\"0\",\"0\",\"0\",\"1\",\"SIGMA\",\"4/2/2020\",\"Output_MADRS_Total\",\"21\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-7777\",\"33376\",\"Visit 9 (Day 63)\",\"60\",\"4/23/2020\",\"0\",\"0\",\"0\",\"1\",\"SIGMA\",\"4/23/2020\",\"Output_MADRS_Total\",\"25\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-7777\",\"33377\",\"Visit 10 (Day 84)/ET\",\"70\",\"5/15/2020\",\"0\",\"0\",\"1\",\"1\",\"SIGMA\",\"5/15/2020\",\"Output_MADRS_Total\",\"36\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-8888\",\"33381\",\"Baseline (Day-1)\",\"10\",\"3/4/2020\",\"0\",\"0\",\"0\",\"1\",\"SIGMA\",\"3/4/2020\",\"Output_MADRS_Total\",\"18\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-8888\",\"33382\",\"Visit 4 (Day 1)\",\"20\",\"3/6/2020\",\"0\",\"0\",\"0\",\"1\",\"SIGMA 24 Hr_c\",\"3/6/2020\",\"Output_MADRS_Total\",\"24\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-8888\",\"33383\",\"Visit 5 (Day 7)\",\"30\",\"3/11/2020\",\"0\",\"0\",\"0\",\"1\",\"SIGMA\",\"3/11/2020\",\"Output_MADRS_Total\",\"28\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-8888\",\"33384\",\"Visit 7 (Day 21)\",\"40\",\"3/25/2020\",\"0\",\"0\",\"0\",\"1\",\"SIGMA\",\"3/25/2020\",\"Output_MADRS_Total\",\"18\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-8888\",\"33385\",\"Visit 8 (Day 42)\",\"50\",\"4/15/2020\",\"0\",\"0\",\"0\",\"1\",\"SIGMA\",\"4/15/2020\",\"Output_MADRS_Total\",\"20\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"],\r\n[\"Compass Independent Rating\",\"333\",\"333-8888\",\"33386\",\"Visit 9 (Day 63)\",\"60\",\"5/7/2020\",\"0\",\"0\",\"1\",\"1\",\"SIGMA\",\"5/7/2020\",\"Output_MADRS_Total\",\"16\",\"EF689272-442C-4695-B944-7042BF96CD1B\",\"C07428C9-1563-4D0A-979B-2DD02D0626B8\",\"83646B5E-56BF-4297-8446-6FA87F42D42C\",\"D9B72A84-8905-45EC-8F3A-570C7A582E2F\",\"324D2C36-DB1E-4438-A2C0-F5246A566728\",\"844F7487-9142-4DC2-AF45-C6CEF06AD3CE\",\"B3E3F739-A91F-4BEE-A37D-76112F630834\"]\r\n\t    \t]\r\n    }\r\n  },\r\n  \"GlobalParameters\": {}\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "https://ussouthcentral.services.azureml.net/workspaces/85916ec58b1047a3a4be984f6a2368ae/services/b64734ac94ab41aa9aa623d3e82d4a76/execute?api-version=2.0&details=true",
+					"protocol": "https",
+					"host": [
+						"ussouthcentral",
+						"services",
+						"azureml",
+						"net"
+					],
+					"path": [
+						"workspaces",
+						"85916ec58b1047a3a4be984f6a2368ae",
+						"services",
+						"b64734ac94ab41aa9aa623d3e82d4a76",
+						"execute"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2.0"
+						},
+						{
+							"key": "details",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EXPT 1_COMPIR_MADRS TEST Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "941b15de-0ce9-416e-90d2-c4f9280c5cb3",
+						"exec": [
+							"var time = pm.globals.get(\"timestamp\");\r",
+							"\r",
+							"var template = `\r",
+							"    <style type=\"text/css\">\r",
+							"        .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+							"        .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+							"        .tftable tr {background-color:#ffffff;}\r",
+							"        .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+							"        .tftable tr:hover {background-color:#e0ffff;}\r",
+							"    </style>\r",
+							"    \r",
+							"    <table class=\"tftable\" border=\"1\">\r",
+							"        <tr>\r",
+							"            <th>Algorithm Name</th>\r",
+							"            <th>SubjectNumber</th>\r",
+							"            <th>SVID</th>\r",
+							"            <th>VisitName</th>\r",
+							"            <th>Outcome</th>\r",
+							"            <th>OutcomeDefinition</th>\r",
+							"            <th>OutcomeDetail</th>\r",
+							"            <th>FlagId</th>\r",
+							"            <th>FlagName</th>          \r",
+							"            \r",
+							"            <th>FlagDefinition</th>\r",
+							"            <th>ErrorCode</th>\r",
+							"            <th>ErrorMessage</th>\r",
+							"            \r",
+							"\r",
+							"            \r",
+							"            \r",
+							"        </tr>\r",
+							"        \r",
+							"        {{#each response.Results.output1.value.Values}}\r",
+							"            <tr id=row_{{@key}} onClick=\"handleClick(this.id)\">\r",
+							"               \r",
+							"                <td id={{@key}}>{{[8]}}</td>\r",
+							"                <td>{{[3]}}</td>\r",
+							"                <td>{{[0]}}</td>\r",
+							"                <td>{{[4]}}</td>\r",
+							"                <td>{{[12]}}</td>\r",
+							"                 <td>{{[10]}}</td>\r",
+							"                <td>{{[11]}}</td> \r",
+							"                <td>{{[7]}}</td>\r",
+							"                <td>{{[8]}}</td>\r",
+							"                \r",
+							"               \r",
+							"                 <td>{{[9]}}</td>\r",
+							"                <td>{{[13]}}</td>\r",
+							"                <td>{{[14]}}</td>\r",
+							"               \r",
+							"                \r",
+							"\r",
+							"                        \r",
+							"            </tr>\r",
+							"        {{/each}}\r",
+							"    </table>\r",
+							"`;\r",
+							"\r",
+							"pm.visualizer.set(template, {\r",
+							"    response: pm.response.json()\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Study Config Response\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        console.log(jsonData)\r",
+							"        //jsonData.Results.output1.value.Values\r",
+							"        for (var i = 0;i<jsonData.Results.output1.value.Values.length;i++) \r",
+							"        {\r",
+							"\r",
+							"            console.log(JSON.stringify( [\"SVID:\",jsonData.Results.output1.value.Values[i][0],jsonData.Results.output1.value.Values[i][10]\r",
+							"            ,jsonData.Results.output1.value.Values[i][12], jsonData.Results.output1.value.Values[i][14]]\r",
+							"            \r",
+							"            ));\r",
+							"            //console.log(\r",
+							"            //jsonData.Results.output1.value.Values[i][0]\r",
+							"            //,jsonData.Results.output1.value.Values[i][10]\r",
+							"            //,jsonData.Results.output1.value.Values[i][12]\r",
+							"            //sonData.Results.output1.value.Values[i][14]);\r",
+							"            //console.log(jsonData.Results.output1.value.Values[i][10]);\r",
+							"            //console.log(jsonData.Results.output1.value.Values[i][12]);\r",
+							"            //console.log(jsonData.Results.output1.value.Values[i][14]);\r",
+							"\r",
+							"            //console.log(jsonData.Results.output1.value.Values[i]);\r",
+							"        }\r",
+							"        //console.log(jsonData.Results.output1.value.Values.length);\r",
+							"        \r",
+							"\r",
+							"}\r",
+							");\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"        pm.response.to.be.ok;\r",
+							"        pm.response.to.be.withBody;\r",
+							"        pm.response.to.be.json;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer HDbsB3fjtOR/j+F8ssh1goFdS3Yg+diBXe5nKDSRk8nvjtTsWbjyiymtmlQMqR9wpE5Yy55ZUD+Xb4tRHtvlIg=="
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"Inputs\":{\r\n      \"input1\":{\r\n         \"ColumnNames\":[\r\n            \"StudyID\",\r\n            \"StudyName\",\r\n            \"StudySiteID\",\r\n            \"SiteNumber\",\r\n            \"SubjectID\",\r\n            \"SubjectNumber\",\r\n            \"SVID\",\r\n            \"SubjectVisitID\",\r\n            \"StudyVisitID\",\r\n            \"VisitName\",\r\n            \"FormName\",\r\n            \"AssessmentDate\",\r\n            \"ItemName\",\r\n            \"ItemValue\",\r\n            \"VisitSequence\",\r\n            \"VisitDate\",\r\n            \"IsUnScheduled\",\r\n            \"IsRepeated\",\r\n            \"CurrentVisitSubmitted\",\r\n            \"CurrentFormSubmitted\",\r\n            \"FormID\",\r\n            \"StudyFormID\"\r\n         ],\r\n         \"Values\":[\r\n            [\r\n               \"ef689272-442c-4695-b944-7042bf96111b\",\r\n               \"Compass Independent Rating\",\r\n               \"c07428c9-1563-4d0a-979b-2dd02d0626b8\",\r\n               \"333\",\r\n               \"83646b5e-56bf-4297-8446-6fa87f44444e\",\r\n               \"333-1111\",\r\n               \"33311\",\r\n               \"d9b72a84-8905-45ec-8f3a-570c7a582e1f\",\r\n               \"324d2c36-db1e-4438-a2c0-f5246a566720\",\r\n               \"Baseline (Day-1)\",\r\n               \"SIGMA\",\r\n               \"4/1/2020\",\r\n               \"Output_MADRS_Total\",\r\n               \"10\",\r\n               \"10\",\r\n               \"4/1/2020\",\r\n               \"0\",\r\n               \"0\",\r\n               \"0\",\r\n               \"0\",\r\n               \"daf4ea3a-2019-417e-b890-b2820461ef69\",\r\n               \"750fc6f8-15b2-4f55-bb1d-e9a1a7328211\"\r\n            ],\r\n            [\r\n               \"ef689272-442c-4695-b944-7042bf96111b\",\r\n               \"Compass Independent Rating\",\r\n               \"c07428c9-1563-4d0a-979b-2dd02d0626b8\",\r\n               \"333\",\r\n               \"83646b5e-56bf-4297-8446-6fa87f44444e\",\r\n               \"333-1111\",\r\n               \"33312\",\r\n               \"d9b72a84-8905-45ec-8f3a-570c7a582e2f\",\r\n               \"324d2c36-db1e-4438-a2c0-f5246a566719\",\r\n               \"Visit 4 (Day 1)\",\r\n               \"SIGMA 24 Hr_c\",\r\n               \"2/20/2020\",\r\n               \"Output_MADRS_Total\",\r\n               \"30\",\r\n               \"20\",\r\n               \"2/20/2020\",\r\n               \"0\",\r\n               \"0\",\r\n               \"1\",\r\n               \"1\",\r\n               \"daf4ea3a-2019-417e-b890-b2820461ef89\",\r\n               \"750fc6f8-15b2-4f55-bb1d-e9a1a7328212\"\r\n            ]\r\n         ]\r\n      }\r\n   },\r\n   \"GlobalParameters\":{\r\n\r\n   }\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "https://ussouthcentral.services.azureml.net/workspaces/85916ec58b1047a3a4be984f6a2368ae/services/b64734ac94ab41aa9aa623d3e82d4a76/execute?api-version=2.0&details=true",
+					"protocol": "https",
+					"host": [
+						"ussouthcentral",
+						"services",
+						"azureml",
+						"net"
+					],
+					"path": [
+						"workspaces",
+						"85916ec58b1047a3a4be984f6a2368ae",
+						"services",
+						"b64734ac94ab41aa9aa623d3e82d4a76",
+						"execute"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2.0"
+						},
+						{
+							"key": "details",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
